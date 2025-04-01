@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapi-deployment
+spec:
+  replicas: 1  # Number of pods to run
+  selector:
+    matchLabels:
+      app: WebApplication1
+  template:
+    metadata:
+      labels:
+        app: WebApplication1
+    spec:
+      containers:
+      - name: WebApplication1
+        image: <your-registry>/WebApplication1:latest
+        ports:
+        - containerPort: 80
