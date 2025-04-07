@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-config
+data:
+  nginx.conf: |
+    events {}
+
+    http {
+        upstream myapi-deployment {  # Correct service name here
+            server myapi-deployment:80;  # Backend API service name (corrected)
+        }
+
+        server {
+            listen 80;
+
+            location / {
+                proxy_pass http://myapi-deployment;  # Correct upstream reference
+                proxy_http_version 1.1;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection 'upgrade';
+                proxy_set_header Host $host;
+                proxy_cache_bypass $http_upgrade;
+            }
+        }
+    }

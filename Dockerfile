@@ -5,10 +5,8 @@
 
 # This stage is used when running from VS in fast mode (Default for Debug configuration)
 FROM mcr.microsoft.com/dotnet/aspnet:8.0-alpine3.20 AS base
+ENV ASPNETCORE_HTTP_PORTS=80
 WORKDIR /app
 EXPOSE 8080
-EXPOSE 8081
-
-
-COPY  bin/Release/net8.0/publish/ .
+COPY ./publish /app
 ENTRYPOINT ["dotnet", "WebApplication1.dll"]

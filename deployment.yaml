@@ -6,14 +6,14 @@ spec:
   replicas: 1  # Number of pods to run
   selector:
     matchLabels:
-      app: WebApplication1
+      app: webapplication1
   template:
     metadata:
       labels:
-        app: WebApplication1
+        app: webapplication1
     spec:
       containers:
-      - name: WebApplication1
-        image: <your-registry>/WebApplication1:latest
+      - name: webapplication1
+        image: webapplicationtest.azurecr.io/webapp:latest
         ports:
         - containerPort: 80
