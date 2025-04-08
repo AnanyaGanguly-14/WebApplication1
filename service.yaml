@@ -10,4 +10,4 @@ spec:
       port: 80
       targetPort: 80
       name: http
-  type: LoadBalancer  # Use LoadBalancer to expose the service externally
+  type: ClusterIP  # Keeps it internal to the cluster

@@ -10,6 +10,7 @@ namespace WebApplication1.Controllers
     public class ValuesController : ControllerBase
     {
         // GET: api/<ValuesController>
+        [Route("GetValue")]
         [HttpGet]
         public IList<Books> Get()
         {
